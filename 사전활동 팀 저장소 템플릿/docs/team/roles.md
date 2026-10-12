@@ -32,10 +32,10 @@
 
 | 단계 | 파일 | 정리 담당 | PR 리뷰어 |
 | --- | --- | --- | --- |
-| 0 | `docs/team/roles.md` | | |
-| 1 | `docs/domain/01-first-look-glossary.md` | | |
-| 2 | `docs/domain/02-people-flow-benchmark.md` | | |
-| 3 | `docs/domain/03-rules-states-llm.md` | | |
-| 4 | `docs/decisions/topic-selection.md` | | |
-| 5 | `docs/interview/mvp-assumptions-questions.md` | | |
-| 6 | `docs/proposal/` (제안서 docx·PDF) | | 전원 |
+| 0 | `docs/team/roles.md` |박승목|석준영|
+| 1 | `docs/domain/01-first-look-glossary.md` |석준영|이은채|
+| 2 | `docs/domain/02-people-flow-benchmark.md` |이은채|김원우|
+| 3 | `docs/domain/03-rules-states-llm.md` |김원우|이효상|
+| 4 | `docs/decisions/topic-selection.md` |이효상|박승목|
+| 5 | `docs/interview/mvp-assumptions-questions.md` |박승목|석준영|
+| 6 | `docs/proposal/` (제안서 docx·PDF) |석준영| 전원 |
