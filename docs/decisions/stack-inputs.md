@@ -19,6 +19,8 @@
 | 박승목 | JAVA, Python | 웹 서비스 | AI 모델링 | 서비스에 맞는 AI 모델링 및 학습 시켜서 활용하기 |
 | 석준영 | JAVA(Spring Boot), Python(FastAPI, Flask, PyTorch, Numpy, Pandas), HTML, CSS, JavaScript(React, Vue), Lua, JSP | AI 기능을 포함한 웹 서비스 | AI 기능과 웹을 연결하는 것, 프론트를 구조적으로 설계하는 것 등이 어려웠습니다. | AI 기능과 웹을 연결하는 것, 프론트를 구조적으로 설계하는 것 등 |
 | 김원우 | | | | |
+| 석준영 | | | | |
+| 김원우 | python,JS | 웹 서비스 | 모델링 및 원하는 만큼의 성능 구현 | 서비스에 어울리는 AI 구현 |
 | 이효상 | | | | |
 | 이은채 | | | | |
 
