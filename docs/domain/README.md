@@ -46,3 +46,14 @@ AI(Claude 등)가 알려준 내용은 출처를 직접 열어 확인하기 전�
 | 법령·제도 | 국가법령정보센터(law.go.kr) |
 | 통계·데이터 | KOSIS 국가통계포털(kosis.kr), 공공데이터포털(data.go.kr) |
 | 업계 자료 | 정부·협회·연구기관 보고서, 기존 서비스의 도움말·요금 안내 문서, 기업 기술 블로그 |
+
+## 2주차 - 1
+
+| 단계 | 파일 | 하는 일 | 상태 |
+| --- | --- | --- | --- |
+| 2-1 | [docs/requirements/user-flows.md](docs/requirements/user-flows.md) | 첫 데모에서 보여줄 핵심 사용자 흐름 (상태 4개 이상) | ☐ |
+| 2-1 | [docs/requirements/backlog.md](docs/requirements/backlog.md) | 스토리와 인수 조건, 필수/선택 | ☐ |
+| 2-1 | [docs/decisions/mvp-scope.md](docs/decisions/mvp-scope.md) | MVP 포함·제외(이유), 제안서(v2)와 다른 점 | ☐ |
+| 2-1 | [docs/decisions/stack-inputs.md](docs/decisions/stack-inputs.md) | 기술 스택을 정하기 전 우리 팀 경험·조건 정리 | ☐ |
+| 2-1 | [docs/team/working-agreement.md](docs/team/working-agreement.md) | 팀 작업 규칙 | ☐ |
+| 2-1 | [.github/ISSUE_TEMPLATE/](.github/ISSUE_TEMPLATE/) | 스토리·버그 이슈 양식 | ☐ |
