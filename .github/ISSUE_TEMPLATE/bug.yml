@@ -1,0 +1,71 @@
+name: 오류 제보
+description: 재현되는 문제
+title: "[버그] "
+labels: ["bug"]
+
+body:
+  - type: input
+    id: failure-point
+    attributes:
+      label: 어느 지점에서 실패했나요?
+      description: 어느 부분(기능)에서 실패했는지 알려주세요.
+      placeholder: 회원가입
+    validations:
+      required: true
+
+  - type: input
+    id: what-happened
+    attributes:
+      label: 무슨 일이 일어났나요?
+      description: 무슨 일이 일어났는지 간단히 작성해주세요.
+      placeholder: 예) 인증 문자가 안 와요.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 어떻게 되어야 하나요?
+      description: 정상적으로 동작했다면 어떻게 되어야 했는지 간단히 서술해주세요.
+      placeholder: 예) 휴대전화 문자 메세지로 인증 번호가 담긴 문자가 와야 해요.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 재현 절차가 어떻게 되나요?
+      description: 다른 사람이 그대로 따라 하면 같은 문제가 생기도록 순서대로 적어주세요.
+      value: |
+        1.
+        2.
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 확인한 것이 있나요? (추측이 아닌 근거)
+      description: 에러 메시지, 로그, 스크린샷 등 직접 확인한 근거를 적어주세요.
+    validations:
+      required: false
+
+  - type: input
+    id: related-story
+    attributes:
+      label: 관련 스토리가 있나요?
+      description: 이 버그와 관련된 사용자 스토리의 백로그 ID를 적어주세요.
+      placeholder: "예: US-05"
+    validations:
+      required: false
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: 인수 조건은 무엇인가요?
+      description: 이 버그가 해결되었다고 판단할 수 있는 조건을 적어주세요.
+      value: |
+        - [ ] 조건 1
+        - [ ] 조건 2
+    validations:
+      required: true
