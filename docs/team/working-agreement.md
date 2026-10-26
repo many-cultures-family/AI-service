@@ -2,7 +2,7 @@
 
 - 저장 위치: `docs/team/working-agreement.md`
 
-- 합의일:
+- 합의일: 2026-10-27
 - 출처: 사전활동 README 작업 규칙에서 이관·수정
 
 ## 사전활동에서 가져온 규칙과 점검
@@ -14,17 +14,17 @@
 | 표가 있는 단계 파일(01~03, topic-selection 등)은 블록마다 정리 담당 1명이 고친다. 다른 사람은 근거 카드를 쓰거나 PR에 댓글을 남긴다 | 아니오 — `docs/team/roles.md`의 담당과 실제 작성자가 다른 경우가 많다. `01-first-look-glossary.md`(담당 석준영)는 실제로 tmdahr만 고쳤다(e2b5612, eae48fc). `docs/decisions/topic-selection.md`(담당 이효상)는 이효상의 커밋이 0건이고 tmdahr가 대부분 작성(20470c9, bc2126c, 030c92a 등), 이은채·김원우도 일부 수정했다. `docs/interview/mvp-assumptions-questions.md`(담당 tmdahr)는 실제로 김원우가 전부 작성했다(7433ac2, 2bcdf5f). `02-people-flow-benchmark.md`(담당 이은채)도 이은채 커밋이 없고 tmdahr·석준영·김원우가 나눠 고쳤다. 3주차에 새로 생긴 표 파일(`requirements/backlog.md`, `decisions/mvp-scope.md`)은 roles.md에 담당이 아예 없고, 2026-10-26 하루에만 석준영·tmdahr·김원우·이은채 4명이 번갈아 직접 커밋했다. | 고침 (팀 합의 필요) | 예시) 담당 1명은 병합 전 최종 정리만 맡고, 다른 사람 수정은 행 단위로 나눠 별도 PR. 3주차 새 파일(backlog, mvp-scope, user-flows)에도 담당 지정. 이유: 담당과 실제 작성자가 계속 달랐음. (팀 합의 필요) |
 
 ## 연락과 응답
-- 연락 수단: 팀 합의 필요
-- 응답 기대 시간: 팀 합의 필요
+- 연락 수단: 디스코드
+- 응답 기대 시간: 3시간 이내
 
 ## 작업 방식
 - 브랜치 이름 규칙: 저장소에서 실제로 쓰인 패턴은 `w<주차>/t<번호>-<작업>-<GitHub아이디>` (예: `w3/t04-AC-tmdahr`, `w2/t05-v2-pdf-final-leehyosang6950`). 버그 수정 브랜치는 `fix/<내용>-<GitHub아이디>` 패턴도 쓰였다(예: `fix/v2-pdf-path-leehyosang6950`).
-- 한 PR의 크기 기준: `.github/pull_request_template.md`에 명시된 대로 "한 PR은 한 블록의 산출물만 담는다."
-- 리뷰 요청 후 기다리는 시간: 팀 합의 필요
+- 한 PR의 크기 기준: 분배받은 작업(태스크) 하나당 PR 하나. (`.github/pull_request_template.md`의 "한 PR은 한 블록" 원칙과 같은 방향)
+- 리뷰 요청 후 기다리는 시간: 4시간 이내 리뷰가 없으면 담당자에게 디스코드로 직접 알린다.
 
 ## 의견이 갈릴 때
-- 결정 방법: 팀 합의 필요
+- 결정 방법: 투표
 - 결정 기록 위치: `docs/decisions/` (예: `topic-selection.md`, `mvp-scope.md`, `stack-inputs.md`)
 
 ## 결석·지각
-- 인수인계 방법: 팀 합의 필요
+- 인수인계 방법: 팀 리더가 결석·지각 상황과 진행 상태를 팀에 설명한다.
