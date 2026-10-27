@@ -17,7 +17,7 @@
 | 이름 | 직접 써 본 언어·도구 | 그걸로 만들어 본 것 (한 줄) | 써 봤지만 어려웠던 것 | 배워 보고 싶은 것 |
 | --- | --- | --- | --- | --- |
 | 박승목 | JAVA, Python | 웹 서비스 | AI 모델링 | 서비스에 맞는 AI 모델링 및 학습 시켜서 활용하기 |
-| 석준영 | JAVA(Spring Boot), Python(FastAPI, Flask, PyTorch, Numpy, Pandas), HTML, CSS, JavaScript(React, Vue), Lua, JSP | AI 기능을 포함한 웹 서비스 | AI 기능과 웹을 연결하는 것, 프론트를 구조적으로 설계하는 것 등이 어려웠습니다. | AI 기능과 웹을 연결하는 것, 프론트를 구조적으로 설계하는 것 등 |
+| 석준영 | JAVA(Spring Boot), Python(FastAPI, Flask, PyTorch, Numpy, Pandas), HTML, CSS, JavaScript(React, Vue), Lua, JSP, MySQL, PostgreSQL, Maria DB, Sqlite, Oracle | AI 기능을 포함한 웹 서비스 | AI 기능과 웹을 연결하는 것, 프론트를 구조적으로 설계하는 것 등이 어려웠습니다. | AI 기능과 웹을 연결하는 것, 프론트를 구조적으로 설계하는 것 등 |
 | 김원우 | python,JS | 웹 서비스 | 모델링 및 원하는 만큼의 성능 구현 | 서비스에 어울리는 AI 구현 |
 | 이효상 | | | | |
 | 이은채 | java, python | 웹앱, 웹 서비스를 만들어 봤다. | fastapi로 AI 서버를 구현하고 Spring Boot 백엔드와 연동하는게 어려웠다. | 서버 간 통신 과정에서 발생하는 오류를 효과적으로 해결하는 방법을 배우고싶다. |
