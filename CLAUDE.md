@@ -44,33 +44,8 @@ Claude는 세션마다 이 파일을 읽는다. 답변·문서·커밋 메시지
 - 환경변수: Gemini API 키, 모델명은 `.env`에 둔다. 이 파일에는 **변수 이름만** 적고 값은 적지 않는다 (이름 확정: 확인 필요)
 - 대상 환경: macOS, Apple Silicon. arm64에서 확인 안 된 도구는 "확인 필요"라고 밝힌다
 
-## 폴더
+## 파일 규칙
 
-현재 구조 (코드 폴더는 `SETUP-PLAN.md` 2절이 정해지면 추가한다):
-
-```
-.
-├── CLAUDE.md                 # 이 파일
-├── README.md                 # 팀 소개, 문서 지도, 근거 카드·회고 목록
-├── .claude/agents/           # 팀 서브에이전트 (stack-advisor)
-├── .github/
-│   ├── pull_request_template.md
-│   └── ISSUE_TEMPLATE/       # user-story.yml, bug.yml
-├── docs/
-│   ├── PRD.md  STACK.md  SETUP-PLAN.md
-│   ├── requirements/         # user-flows.md, backlog.md
-│   ├── decisions/            # topic-selection, mvp-scope, stack-inputs (결정 기록장)
-│   ├── domain/               # 01~03 조사, ai-check-log.md, README.md(읽기 전용)
-│   │   └── cards/            # 근거 카드 [관점번호]-[GitHub아이디]-[순번].md
-│   ├── interview/            # 가설·질문지, 클라이언트 미팅 기록
-│   ├── proposal/             # 제안서 v0 양식, v1·v2 (docx·PDF)
-│   └── team/                 # roles.md, working-agreement.md
-└── logs/
-    ├── _template-pre.md      # 개인 회고 양식 (pre-[GitHub아이디].md로 복사)
-    └── daily/                # YYYY-MM-DD-한글이름.md
-```
-
-파일 규칙:
 - 근거 카드는 `docs/domain/cards/_template.md`를 복사해 만든다
 - `docs/domain/ai-check-log.md`는 파일 하나이고, **맨 아래에 이어서** 쓴다
 - `docs/domain/README.md`는 고치지 않는다
@@ -103,8 +78,7 @@ PR:
 - **태스크 하나당 PR 하나** (한 PR은 한 블록의 산출물만)
 - 본문은 `.github/pull_request_template.md`를 채운다: 무엇을 만들었나 / 어떤 결정 / **Claude가 제안했지만 버린 것** / 리뷰어가 볼 곳
 - 승인 기준:
-  - 문서 PR(조사, 회고, 로그 등): 작성자 셀프 병합 가능
-  - 코드 PR, 반드시 확인이 필요한 PR: **작성자 외 1명 이상 승인 후** 병합
+  - 모든 PR(문서 PR 포함): **작성자 외 1명 이상 승인 후** 병합. 작성자 셀프 병합은 하지 않는다
   - v2·제안서 PR: 작성자 제외 4명 승인
 - 리뷰 요청 후 4시간 안에 리뷰가 없으면 디스코드로 담당자에게 직접 알린다
 - 병합 뒤: 병합한 사람이 팀 채팅(디스코드)에 알리고, 전원 `git pull`
@@ -113,15 +87,16 @@ PR:
 
 Claude는 **비교·초안·점검**까지만 한다. 아래는 사람이 직접 하고, Claude는 대신 채우거나 결정하지 않는다.
 
-1. **최종 결정**: 기술 스택, MVP 범위, 의견이 갈린 문제. Claude는 후보 비교만 하고 결정은 팀 투표로 한다. "AI가 추천해서"는 이유가 될 수 없다
-2. **인수 조건 작성**: 스토리 초안은 Claude가 만들어도 되지만 `backlog.md`의 인수 조건은 팀이 직접 쓴다
+1. **최종 결정**: 기술 스택, MVP 범위, 의견이 갈린 문제. Claude는 후보 비교만 하고 결정은 팀 투표로 한다. "AI가 추천해서"는 이유가 될 수 없다. Claude는 `docs/STACK.md`의 스택과 `docs/decisions/mvp-scope.md`의 범위를 바꾸지 않는다
+2. **인수 조건 작성**: 스토리 초안은 Claude가 만들어도 되지만 `backlog.md`의 인수 조건은 팀이 직접 쓴다. 인수 조건을 고쳐 달라는 요청을 받으면 고치지 않고, 무엇이 문제인지만 알려 준 뒤 팀이 직접 고칠지 먼저 확인한다
 3. **팀 경험·조건 작성** (`docs/decisions/stack-inputs.md`): Claude를 쓰지 않는다
 4. **사용자 흐름** (`docs/requirements/user-flows.md`): 이 단계에서는 Claude를 쓰지 않는다
 5. **설치·프로젝트 초기화 실행**: 학생이 공식 문서를 보고 직접 실행한다. Claude의 계획과 공식 문서가 다르면 공식 문서를 따르고 `SETUP-PLAN.md` 7절에 차이를 적는다
 6. **"완료" 판정**: "AI가 완료라고 답함"은 확인이 아니다. 각자 자기 Mac에서 실제로 실행한 결과만 기록한다. 실행 안 했으면 `미실행`이라고 쓴다
-7. **사실 확정**: Claude가 알려 준 내용은 출처를 직접 열어 확인하기 전까지 `[추정]`이다. 모르는 버전·명령·한도는 `확인 필요`, 안 정한 것은 `미정`으로 쓴다
+7. **사실 확정**: 문서·출처에 없는 내용(숫자, 사실, 고객 답변, 버전·명령)을 지어내지 않는다. Claude가 알려 준 내용은 출처를 직접 열어 확인하기 전까지 `[추정]`이다. 모르는 버전·명령·한도는 `확인 필요`, 안 정한 것은 `미정`으로 쓴다
 8. **고객사 답변이 필요한 항목**: 언어 수, 양식 범위 등은 Claude가 정하지 않는다 (`PRD.md` 8절)
 9. **main 병합·직접 push**, 배정받지 않은 공용 표 수정
+10. **제출한 제안서 수정**: `docs/proposal/`의 v1·v2 파일은 고치지 않는다. 다른 점은 `docs/decisions/mvp-scope.md` '제안서(v1)와 다른 점'처럼 기록만 한다
 
 Claude 제안을 채택하거나 버렸다면 `docs/domain/ai-check-log.md`에 이유와 함께 적고, PR 본문에도 남긴다.
 
@@ -132,7 +107,7 @@ Claude 제안을 채택하거나 버렸다면 `docs/domain/ai-check-log.md`에 �
 - 오류 판정(필수 누락·형식 오류·불일치)은 규칙 엔진이 한다. LLM은 판정하지 않는다 (R3)
 - 개인정보: OCR 직후 **한 함수에서 마스킹한 뒤에만** LLM에 보낸다. 사전 정보 원본, 인증번호·비밀번호는 보내지 않는다 (R1·R7·R8)
 - 가상 작성 환경의 내용은 실제 기관에 절대 전송하지 않는다 (R4, R10)
-- 모델명은 `.env`로 분리하고, 무료 한도를 넘지 않게 개발 중 호출을 최소화한다
+- 모델명은 `.env`로 분리한다. 개발·테스트 중에는 저장해 둔 LLM 응답을 재사용하고, 실제 호출은 L1~L3 동작을 확인할 때만 한다
 - PRD의 실제 기능은 `SETUP-PLAN.md`의 초기화 범위가 끝나고 태스크로 배정된 뒤에 만든다
 
 ## 저장소에 올리는 것 / 올리지 않는 것
