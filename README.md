@@ -32,6 +32,11 @@
 | 5 | [docs/interview/client-meeting-1.md](docs/interview/client-meeting-1.md) | 클라이언트 미팅 1 질의응답, 피드백 판정 | ☐ |
 | 6 | [docs/proposal/README.md](docs/proposal/README.md) | **클라이언트에게 보내는 프로젝트 제안서** (Claude 초안 → 팀 확인 → Word 양식, 완성본 docx·PDF) | ☐ |
 | - | `logs/pre-[GitHub 아이디].md` | 개인 회고 (사람마다 파일 하나) | ☐ |
+| 2-2 | [docs/STACK.md](docs/STACK.md) | 기술 스택 결정과 이유 | ☐ |
+| 2-2 | [docs/PRD.md](docs/PRD.md) | 정한 문서로 가는 안내판 PRD v0.1 | ☐ |
+| 2-2 | [docs/SETUP-PLAN.md](docs/SETUP-PLAN.md) | 승인한 초기화 계획과 5명 실행 확인 | ☐ |
+| 2-2 | [CLAUDE.md](CLAUDE.md) | Claude가 매 세션 읽는 팀 지침 | ☐ |
+| 2-2 | [.claude/agents/](.claude/agents/) | stack-advisor | ☐ |
 
 ## 논문·자료 근거 카드
 
