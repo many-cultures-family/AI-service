@@ -6,7 +6,7 @@ Claude는 세션마다 이 파일을 읽는다. 답변·문서·커밋 메시지
 ## 프로젝트 한눈에
 
 - 서비스: 결혼이민자가 웹 신청서를 칸 단위로 인식해 모국어 설명을 보고, 가상 작성 환경에서 연습하는 웹 서비스
-- 핵심 대상: **작성 건**. 상태값은 `수정 · 반려 · 성공 · 취소` 4개뿐이다 (`docs/domain/03-rules-states-llm.md` 3-2와 똑같이 쓴다)
+- 핵심 대상: **작성 건**. 상태값은 `docs/domain/03-rules-states-llm.md` 3-2와 똑같이 쓴다 (`수정 · 반려 · 성공 · 취소`). `backlog.md`의 단계 이름(업로드됨·인식완료 등)과 맞출지는 아직 미정이다 (`docs/PRD.md` 8절)
 - 기능 번호는 `docs/requirements/backlog.md`의 `F-xx`, `US-xx`만 쓴다. 새 번호를 만들지 않는다
 - 스택(`docs/STACK.md` A안): React(Vite) + FastAPI 단일 서버 + SQLite, UI는 MUI 또는 Mantine, LLM은 Gemini 무료 티어, OCR은 PaddleOCR 또는 EasyOCR(확인 중)
 - 시연: 로컬(각자 Mac). 비용은 **무료만**
@@ -63,12 +63,11 @@ Claude는 세션마다 이 파일을 읽는다. 답변·문서·커밋 메시지
 │   ├── domain/               # 01~03 조사, ai-check-log.md, README.md(읽기 전용)
 │   │   └── cards/            # 근거 카드 [관점번호]-[GitHub아이디]-[순번].md
 │   ├── interview/            # 가설·질문지, 클라이언트 미팅 기록
-│   ├── proposal/             # 제안서 (draft.md → docx·PDF)
+│   ├── proposal/             # 제안서 v0 양식, v1·v2 (docx·PDF)
 │   └── team/                 # roles.md, working-agreement.md
-├── logs/
-│   ├── pre-[GitHub아이디].md # 개인 회고
-│   └── daily/                # YYYY-MM-DD-한글이름.md
-└── references/
+└── logs/
+    ├── _template-pre.md      # 개인 회고 양식 (pre-[GitHub아이디].md로 복사)
+    └── daily/                # YYYY-MM-DD-한글이름.md
 ```
 
 파일 규칙:
@@ -84,7 +83,7 @@ Claude는 세션마다 이 파일을 읽는다. 답변·문서·커밋 메시지
 **main에 직접 커밋·push하지 않는다.** 모든 변경은 브랜치 → PR → 병합.
 
 브랜치 이름:
-- 기본: `w<주차>/t<태스크번호>-<작업>-<GitHub아이디>` (예: `w3/t14-prd-tmdahr`)
+- 기본: `w<주차>/t<태스크번호>-<작업>-<GitHub아이디>` (예: `w3/t04-AC-tmdahr`)
 - 버그 수정: `fix/<내용>-<GitHub아이디>` (예: `fix/v2-pdf-path-leehyosang6950`)
 
 커밋 메시지: `<종류>: <한국어로 무엇을 했는지>`
