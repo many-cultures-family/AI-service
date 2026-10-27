@@ -1,0 +1,155 @@
+# CLAUDE.md — 팀 IDDP「디딤돌」 지침
+
+Claude는 세션마다 이 파일을 읽는다. 답변·문서·커밋 메시지는 모두 **한국어**로 쓴다.
+이 파일은 저장소에 올려 팀 5명이 같이 쓴다. 고칠 때도 브랜치 → PR을 거친다.
+
+## 프로젝트 한눈에
+
+- 서비스: 결혼이민자가 웹 신청서를 칸 단위로 인식해 모국어 설명을 보고, 가상 작성 환경에서 연습하는 웹 서비스
+- 핵심 대상: **작성 건**. 상태값은 `수정 · 반려 · 성공 · 취소` 4개뿐이다 (`docs/domain/03-rules-states-llm.md` 3-2와 똑같이 쓴다)
+- 기능 번호는 `docs/requirements/backlog.md`의 `F-xx`, `US-xx`만 쓴다. 새 번호를 만들지 않는다
+- 스택(`docs/STACK.md` A안): React(Vite) + FastAPI 단일 서버 + SQLite, UI는 MUI 또는 Mantine, LLM은 Gemini 무료 티어, OCR은 PaddleOCR 또는 EasyOCR(확인 중)
+- 시연: 로컬(각자 Mac). 비용은 **무료만**
+
+## 문서 지도 (먼저 볼 곳)
+
+| 알고 싶은 것 | 볼 문서 |
+| --- | --- |
+| 무엇을 만드나 (안내판) | `docs/PRD.md` |
+| 스토리·인수 조건 | `docs/requirements/backlog.md` |
+| 사용자 흐름 | `docs/requirements/user-flows.md` |
+| MVP 포함·제외 | `docs/decisions/mvp-scope.md` |
+| 규칙(R1~R12)·상태·LLM 자리(L1~L3) | `docs/domain/03-rules-states-llm.md` |
+| 스택과 이유 | `docs/STACK.md` |
+| 초기화 계획·실행 확인 | `docs/SETUP-PLAN.md` |
+| 팀 작업 규칙·역할 | `docs/team/working-agreement.md`, `docs/team/roles.md` |
+
+같은 내용을 두 문서에 옮겨 적지 않는다. **문서 이름과 번호(US·R·F)로 가리킨다.**
+
+## 실행 명령
+
+> 아직 프로젝트 초기화 전이다. `docs/SETUP-PLAN.md` 1~3절이 비어 있으므로 아래는 **확인 필요**다.
+> Claude는 버전이나 명령을 추측해서 채우지 않는다. 팀이 공식 문서로 확인하고 직접 실행한 명령만 여기에 옮긴다.
+
+| 단계 | 명령 | 실행 위치 | 상태 |
+| --- | --- | --- | --- |
+| 가상환경·설치 (백엔드) | 확인 필요 | 확인 필요 | 미실행 |
+| 설치 (프론트엔드) | 확인 필요 | 확인 필요 | 미실행 |
+| 서버 실행 | 확인 필요 | 확인 필요 | 미실행 |
+| 화면 실행 | 확인 필요 | 확인 필요 | 미실행 |
+| 테스트 | 확인 필요 | 확인 필요 | 테스트 미구성 |
+| 린트·포맷 | 확인 필요 | 확인 필요 | 미실행 |
+
+- 서버 포트: **5000번은 쓰지 않는다** (Mac AirPlay가 쓴다)
+- 환경변수: Gemini API 키, 모델명은 `.env`에 둔다. 이 파일에는 **변수 이름만** 적고 값은 적지 않는다 (이름 확정: 확인 필요)
+- 대상 환경: macOS, Apple Silicon. arm64에서 확인 안 된 도구는 "확인 필요"라고 밝힌다
+
+## 폴더
+
+현재 구조 (코드 폴더는 `SETUP-PLAN.md` 2절이 정해지면 추가한다):
+
+```
+.
+├── CLAUDE.md                 # 이 파일
+├── README.md                 # 팀 소개, 문서 지도, 근거 카드·회고 목록
+├── .claude/agents/           # 팀 서브에이전트 (stack-advisor)
+├── .github/
+│   ├── pull_request_template.md
+│   └── ISSUE_TEMPLATE/       # user-story.yml, bug.yml
+├── docs/
+│   ├── PRD.md  STACK.md  SETUP-PLAN.md
+│   ├── requirements/         # user-flows.md, backlog.md
+│   ├── decisions/            # topic-selection, mvp-scope, stack-inputs (결정 기록장)
+│   ├── domain/               # 01~03 조사, ai-check-log.md, README.md(읽기 전용)
+│   │   └── cards/            # 근거 카드 [관점번호]-[GitHub아이디]-[순번].md
+│   ├── interview/            # 가설·질문지, 클라이언트 미팅 기록
+│   ├── proposal/             # 제안서 (draft.md → docx·PDF)
+│   └── team/                 # roles.md, working-agreement.md
+├── logs/
+│   ├── pre-[GitHub아이디].md # 개인 회고
+│   └── daily/                # YYYY-MM-DD-한글이름.md
+└── references/
+```
+
+파일 규칙:
+- 근거 카드는 `docs/domain/cards/_template.md`를 복사해 만든다
+- `docs/domain/ai-check-log.md`는 파일 하나이고, **맨 아래에 이어서** 쓴다
+- `docs/domain/README.md`는 고치지 않는다
+- 결정(투표 결과 포함)은 `docs/decisions/`에 기록한다
+- 표가 있는 공용 문서는 **리더가 그 태스크를 배정한 사람만** 해당 블록을 고친다. 다른 사람은 근거 카드를 쓰거나 PR 댓글을 남긴다
+- 코드 영역(서버·화면·테스트)이 생기면 `SETUP-PLAN.md` 2절의 역할별 담당 폴더를 따른다. 남의 영역 파일은 PR 없이 고치지 않는다
+
+## 브랜치·커밋·PR 규칙
+
+**main에 직접 커밋·push하지 않는다.** 모든 변경은 브랜치 → PR → 병합.
+
+브랜치 이름:
+- 기본: `w<주차>/t<태스크번호>-<작업>-<GitHub아이디>` (예: `w3/t14-prd-tmdahr`)
+- 버그 수정: `fix/<내용>-<GitHub아이디>` (예: `fix/v2-pdf-path-leehyosang6950`)
+
+커밋 메시지: `<종류>: <한국어로 무엇을 했는지>`
+
+| 종류 | 언제 | 예 |
+| --- | --- | --- |
+| `docs` | 문서 작성·수정 | `docs: PRD v0.1 안내판 작성` |
+| `feat` | 기능 추가 (코드) | `feat: 문서 업로드 API 추가` |
+| `fix` | 버그·실수 수정 | `fix: 머지 중 중복된 표 행 복구` |
+| `test` | 테스트 추가·수정 | `test: US-01 업로드 실패 시나리오 추가` |
+| `chore` | 설정·도구·에이전트 등 | `chore: stack-advisor 서브에이전트 추가` |
+
+- 한 커밋에는 한 가지 변경만 담는다
+- Claude가 만든 커밋에는 마지막 줄에 `Co-Authored-By`를 남긴다
+
+PR:
+- **태스크 하나당 PR 하나** (한 PR은 한 블록의 산출물만)
+- 본문은 `.github/pull_request_template.md`를 채운다: 무엇을 만들었나 / 어떤 결정 / **Claude가 제안했지만 버린 것** / 리뷰어가 볼 곳
+- 승인 기준:
+  - 문서 PR(조사, 회고, 로그 등): 작성자 셀프 병합 가능
+  - 코드 PR, 반드시 확인이 필요한 PR: **작성자 외 1명 이상 승인 후** 병합
+  - v2·제안서 PR: 작성자 제외 4명 승인
+- 리뷰 요청 후 4시간 안에 리뷰가 없으면 디스코드로 담당자에게 직접 알린다
+- 병합 뒤: 병합한 사람이 팀 채팅(디스코드)에 알리고, 전원 `git pull`
+
+## Claude에게 맡기지 않는 것
+
+Claude는 **비교·초안·점검**까지만 한다. 아래는 사람이 직접 하고, Claude는 대신 채우거나 결정하지 않는다.
+
+1. **최종 결정**: 기술 스택, MVP 범위, 의견이 갈린 문제. Claude는 후보 비교만 하고 결정은 팀 투표로 한다. "AI가 추천해서"는 이유가 될 수 없다
+2. **인수 조건 작성**: 스토리 초안은 Claude가 만들어도 되지만 `backlog.md`의 인수 조건은 팀이 직접 쓴다
+3. **팀 경험·조건 작성** (`docs/decisions/stack-inputs.md`): Claude를 쓰지 않는다
+4. **사용자 흐름** (`docs/requirements/user-flows.md`): 이 단계에서는 Claude를 쓰지 않는다
+5. **설치·프로젝트 초기화 실행**: 학생이 공식 문서를 보고 직접 실행한다. Claude의 계획과 공식 문서가 다르면 공식 문서를 따르고 `SETUP-PLAN.md` 7절에 차이를 적는다
+6. **"완료" 판정**: "AI가 완료라고 답함"은 확인이 아니다. 각자 자기 Mac에서 실제로 실행한 결과만 기록한다. 실행 안 했으면 `미실행`이라고 쓴다
+7. **사실 확정**: Claude가 알려 준 내용은 출처를 직접 열어 확인하기 전까지 `[추정]`이다. 모르는 버전·명령·한도는 `확인 필요`, 안 정한 것은 `미정`으로 쓴다
+8. **고객사 답변이 필요한 항목**: 언어 수, 양식 범위 등은 Claude가 정하지 않는다 (`PRD.md` 8절)
+9. **main 병합·직접 push**, 배정받지 않은 공용 표 수정
+
+Claude 제안을 채택하거나 버렸다면 `docs/domain/ai-check-log.md`에 이유와 함께 적고, PR 본문에도 남긴다.
+
+## 서비스 코드를 짤 때 지킬 규칙 (Claude 포함)
+
+- LLM(Gemini)은 **FastAPI 서버에서만** 호출한다. 프론트엔드에서 직접 부르지 않는다
+- LLM 결과는 **제안으로만** 저장한다. 상태 변경은 서버 규칙 검증과 사용자 확인 뒤에만 한다 (R2·R6·R9)
+- 오류 판정(필수 누락·형식 오류·불일치)은 규칙 엔진이 한다. LLM은 판정하지 않는다 (R3)
+- 개인정보: OCR 직후 **한 함수에서 마스킹한 뒤에만** LLM에 보낸다. 사전 정보 원본, 인증번호·비밀번호는 보내지 않는다 (R1·R7·R8)
+- 가상 작성 환경의 내용은 실제 기관에 절대 전송하지 않는다 (R4, R10)
+- 모델명은 `.env`로 분리하고, 무료 한도를 넘지 않게 개발 중 호출을 최소화한다
+- PRD의 실제 기능은 `SETUP-PLAN.md`의 초기화 범위가 끝나고 태스크로 배정된 뒤에 만든다
+
+## 저장소에 올리는 것 / 올리지 않는 것
+
+올린다:
+- `docs/` 문서, 결정 기록, `ai-check-log.md` 기록
+- 개인 회고(`logs/pre-*.md`), 데일리 로그(`logs/daily/`)
+- `CLAUDE.md`, `.claude/agents/`, `.github/` 템플릿
+- 소스 코드, 의존성 목록 파일, 테스트, 실행 방법(README)
+- `.env.example` (변수 **이름만**, 값은 비움)
+
+올리지 않는다 (`.gitignore`에 넣는다):
+- `.env` 및 API 키·비밀번호 등 비밀값 (커밋 메시지·문서·이슈에도 쓰지 않는다)
+- 실제 사용자 문서, 개인정보가 담긴 샘플 파일 (테스트용은 가짜 데이터로 만든다)
+- 가상환경·의존성 폴더 (예: `.venv/`, `node_modules/`), 빌드 결과물
+- SQLite DB 파일, OCR 모델 다운로드 파일
+- 개인 설정: `.DS_Store`, `.idea/`, `CLAUDE.local.md`, `.claude/settings.local.json`
+
+비밀값을 실수로 커밋했다면 바로 팀에 알리고 키를 재발급한다 (기록에서 지우는 것만으로는 부족하다).
